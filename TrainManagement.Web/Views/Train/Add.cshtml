@@ -32,7 +32,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="TrainLength">Train length(in railway carriages)</label>
+                <label asp-for="TrainLength">Maximum train length on this direction(in railway carriages)</label>
                 <input asp-for="TrainLength" class="form-control" />
                 <span asp-validation-for="TrainLength" class="text-danger"></span>
             </div>
@@ -47,8 +47,8 @@
         </div>
         <br />
         <div class="w-12 btn-group" role="group">
-            <input type="submit" class="btn btn-primary mx-1" value="Add" />
-            <a asp-action="Index" class="btn btn-danger mx-1">Back</a>
+            <a asp-action="Index" class="btn btn-outline-info mx-1">🡸 Back</a>
+            <input type="submit" class="btn btn-outline-danger mx-1" value="✓ Add" />
         </div>
     </div>
 </form>

@@ -17,7 +17,7 @@ namespace TrainManagement.Web.Models
 
         //[Required(ErrorMessage = "Please enter train length")]
         [Display(Name = "Train lenght")]
-        [Range(0,110,ErrorMessage ="Please enter a valid train length (0-110)")]
+        [Range(1,100,ErrorMessage ="Please enter a valid train length (1-100)")]
         public int TrainLength { get; set; }
 
         //[Required(ErrorMessage = "Please enter Average Amount Of Carriages Per Day")]

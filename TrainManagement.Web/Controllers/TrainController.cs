@@ -28,7 +28,7 @@ namespace TrainManagement.Web.Controllers
             return View();
         }
 
-        public IActionResult TrainUpdate(int? Id)
+        public IActionResult TrainEdit(int? Id)
         {
             var _trainModel = _context.Trains.Find(Id);
             if (_trainModel == null)
@@ -40,7 +40,7 @@ namespace TrainManagement.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(TrainModel trainModel)
+        public IActionResult Edit(TrainModel trainModel)
         {
             if (ModelState.IsValid)
             {
@@ -73,6 +73,17 @@ namespace TrainManagement.Web.Controllers
             _context.SaveChanges();            
             return RedirectToAction("Index");
                         
+        }
+
+        public IActionResult TrainCalculate(int? Id)
+        {
+            var _trainModel = _context.Trains.Find(Id);
+            if (_trainModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(_trainModel);
         }
     }
 }
