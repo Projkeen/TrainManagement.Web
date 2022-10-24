@@ -6,7 +6,19 @@
     Layout = "_LayoutUser";
     ViewData["Title"] = "Login";
 }
-<h3>Registration form</h3>
+
+<div>
+    <div class="row pt-4 pb-5">
+        <div class="col-4">
+            <h3>Registration form</h3>
+        </div>
+       @* <div class="col-3">
+            <a asp-controller="User" asp-action="Registration" class="btn btn-success mx-1">Sign up</a>
+        </div>*@
+    </div>
+</div>
+<br />
+
 <form method="post" asp-action="Registration">
     <div class="container align-content-center">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -39,8 +51,8 @@
         <br />
 
         <div class="w-12 btn-group" role="group">
-            <input type="submit" class="btn btn-primary mx-1" value="Register" />
-            <a asp-controller="User" asp-action="Login" class="btn btn-secondary mx-1">Cancel</a>
+            <a asp-controller="User" asp-action="Login" class="btn btn-info mx-1">🡸 Cancel</a>
+            <input type="submit" class="btn btn-success mx-1" value="✓ Register" />
         </div>
     </div>
 </form>

@@ -10,23 +10,26 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light @*bg-grey*@ border-bottom box-shadow mb-3" style="background-color:lightgray">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TrainManagement.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><h2>TrainManagement.Web</h2></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>*@
+                        <li class="nav-item" style="margin-left:500px; margin-right:200px; /*text-align:right*/ ">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Train" asp-action="Index"><h4>Start</h4></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Train" asp-action="Index">Trains</a>
+                        <li class="nav-item" style="margin-left:300px; @*text-align:right*@">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Login"><h5>Sign In or Sign Up</h5></a>
                         </li>
                     </ul>
                 </div>
@@ -39,9 +42,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="bottom:0;position:fixed;width:100%;text-align:center">
-        <div class="container">
-            &copy; 2022 - TrainManagement.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted" style="bottom:0;position:fixed;width:100%;text-align:center; background-color:lightgray">
+        <div class="container" style="color:black">
+            &copy; 2022 - TrainManagement.Web - by Projkeen - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
