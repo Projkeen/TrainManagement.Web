@@ -11,5 +11,6 @@ namespace TrainManagement.Web.Data
 
         public DbSet<TrainModel> Trains { get; set; }
 
+        public DbSet<UserModel> Users { get; set; }
     }
 }

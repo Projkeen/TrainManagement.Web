@@ -1,0 +1,49 @@
+﻿@model UserModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutUser";
+    ViewData["Title"] = "Login";
+}
+<h3>Login form</h3>
+<form method="post" asp-action="Login">
+    <div class="container align-content-center">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <p><b>@ViewBag.LoginStatus</b></p>
+        <br />
+
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="col-4">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+        <div class="w-12 btn-group" role="group">
+            <input type="submit" class="btn btn-primary mx-1" value="Login" />
+            <a asp-controller="User" asp-action="Registration" class="btn btn-success mx-1">Register</a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-success mx-1">Run app without Registration</a>
+        </div>
+    </div>
+</form>
