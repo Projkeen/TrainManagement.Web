@@ -3,13 +3,15 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewData["Title"] = "Calculation results";
+    ViewData["Title"] = "Calculation Results";
 }
 @{
-    double amountOfTrains = Model.AverageAmountOfCarriagesPerDay / Model.TrainLength;
+    int amountOfTrains = Model.AverageAmountOfCarriagesPerDay / Model.TrainLength;
     int needRailwayCarriage = Model.TrainLength - (Model.AverageAmountOfCarriagesPerDay % Model.TrainLength);
-    var ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
-    var overtime = ts * amountOfTrains;
+    //var ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
+    TimeSpan ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
+    TimeSpan tvs = new TimeSpan(ts.Ticks - (ts.Ticks % 600000000));   
+    var overtime = tvs * amountOfTrains;
 }
 
 <h3 style="text-align:center" class="pt-5">Calculation of the train formation time on this direction</h3>
@@ -21,7 +23,7 @@
             <th>Departure Station</th>
             <th>Final Destination</th>
             <th>Train Length(railway carriages)</th>
-            <th>Amount of train</th>
+            <th>Amount of trains</th>
             <th>Required number of railway carriages for a new train</th>
             <th>Time, required to form one train</th>
             <th>Time, required to form all trains for this direction</th>
@@ -35,7 +37,7 @@
             <td width="10%">@Model.TrainLength</td>
             <td width="10%">@amountOfTrains</td>
             <td width="20%">@needRailwayCarriage</td>
-            <td width="20%">@ts</td>
+            <td width="20%">@tvs</td>
             <td width="20%">@overtime</td>
         </tr>
 
