@@ -11,10 +11,18 @@ namespace TrainManagement.Web.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(string SearchString)
         {
-            IEnumerable<TrainModel> trainList = _context.Trains.ToList();
-            return View(trainList);
+            //IEnumerable<TrainModel> trainList = _context.Trains.ToList();
+            //return View(trainList);
+            ViewData["Filter"] = SearchString;
+            var train = from f in _context.Trains select f;
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                train = train.Where(f => f.FinalDestination.Contains(SearchString));               
+            }
+
+            return View(train);
         }
 
         public IActionResult Add(TrainModel trainModel)

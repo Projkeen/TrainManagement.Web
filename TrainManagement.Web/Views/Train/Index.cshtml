@@ -13,6 +13,15 @@
         <div class="col-3">
             <a asp-controller="Train" asp-action="Add" class="btn btn-secondary btn-lg">+ Add New Train</a>
         </div>
+        <div class="col-4">
+            <form asp-action="Index" method="get">
+                <div class="w-100 btn-group" role="group">                    
+                    <input type="text" class="form-control" name="SearchString" placeholder="Search in final destination" autocomplete="off" value="@ViewData["Filter"]" />
+                    <input type="submit" value="Search" class="btn btn-secondary" />
+                    <a asp-action="Index" class="btn btn-info">Back</a>
+                </div>
+            </form>            
+        </div>
     </div>
 </div>
 <br />
@@ -46,7 +55,7 @@
                                 <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@i.TrainId" class="btn btn-outline-secondary">Edit</a>
                                 <button type="submit" class="btn btn-outline-danger" onclick="return confirm('⚠ Are you sure?')">Delete</button>
                             </div>
-                        </form>                        
+                        </form>
                     </td>
                 </tr>
             }
@@ -55,6 +64,6 @@
 }
 else
 {
-    <p class="text-center"><b>No trains in forecast</b></p>
+    <p class="text-center"><b>No trains</b></p>
 }
 
