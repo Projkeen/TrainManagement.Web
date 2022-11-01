@@ -52,7 +52,7 @@
             </td>
         </tr>       
         <tr>
-            <th>Time, required to form one train</th>
+            <th>Time required to form one train</th>
             <td>@tvs</td>
         </tr>
         <tr>
@@ -61,14 +61,23 @@
         </tr>
         <tr>
             <th>Amount of trains</th>
-            <td>@amountOfTrains</td>
+            <td>
+                    @if (@Model.TrainLength <= @Model.AverageAmountPerDay)
+                    {
+                    <p>@amountOfTrains</p>
+                    }
+                    else
+                    {
+                    <p>1</p>
+                    }
+            </td>
         </tr>
         <tr>
             <th>Required number of railway carriages for a new train</th>
             <td>@needRailwayCarriage</td>
         </tr>
         <tr>
-            <th>Time, required to form all trains for this direction</th>
+            <th>Time required to form all trains for this direction</th>
             <td>@overTime</td>
         </tr>            
 
