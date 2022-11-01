@@ -29,18 +29,27 @@ namespace TrainManagement.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainId"), 1L, 1);
 
-                    b.Property<int>("AverageAmountOfCarriagesPerDay")
+                    b.Property<int>("AverageAmountPerDay")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DC")
                         .HasColumnType("int");
 
                     b.Property<string>("DepartureStation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EC")
+                        .HasColumnType("int");
+
                     b.Property<string>("FinalDestination")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrainLength")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.HasKey("TrainId");

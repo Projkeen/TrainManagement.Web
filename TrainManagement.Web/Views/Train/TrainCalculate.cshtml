@@ -6,46 +6,78 @@
     ViewData["Title"] = "Calculation Results";
 }
 @{
-    int amountOfTrains = Model.AverageAmountOfCarriagesPerDay / Model.TrainLength;
-    int needRailwayCarriage = Model.TrainLength - (Model.AverageAmountOfCarriagesPerDay % Model.TrainLength);
+
+    int lc = Model.TrainLength - Model.EC;
+    double factWeight = (25.4 * Model.EC + 65 * lc);
+    double overWeight = factWeight - Model.Weight;
+    int amountOfTrains = Model.AverageAmountPerDay / Model.TrainLength;
+    int needRailwayCarriage = Model.TrainLength - (Model.AverageAmountPerDay % Model.TrainLength);
     //var ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
-    TimeSpan ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
-    TimeSpan tvs = new TimeSpan(ts.Ticks - (ts.Ticks % 600000000));   
-    var overtime = tvs * amountOfTrains;
+    TimeSpan ts = TimeSpan.FromMinutes(Model.TrainLength * 1.7 + Model.DC * 2.3);    
+    TimeSpan tvs = new TimeSpan(ts.Ticks - (ts.Ticks % 600000000));
+    var overTime = tvs * amountOfTrains - 0.4 * tvs;
 }
 
-<h3 style="text-align:center" class="pt-5">Calculation of the train formation time on this direction</h3>
-<br/>
+<h3 style="text-align:center" class="pt-5">Results calculation the train formation on direction from @Model.DepartureStation to @Model.FinalDestination</h3>
+<br />
 
 <table class="table table-bordered table-hover table-striped" style="text-align:center" width="100%">
-    <thead style="height:auto; vertical-align: central;">
-        <tr>
-            <th>Departure Station</th>
-            <th>Final Destination</th>
-            <th>Train Length(railway carriages)</th>
-            <th>Amount of trains</th>
-            <th>Required number of railway carriages for a new train</th>
-            <th>Time, required to form one train</th>
-            <th>Time, required to form all trains for this direction</th>
-        </tr>
-    </thead>
+    <thead style="height:auto; vertical-align: central" width=50%>     
 
     <tbody>
         <tr>
-            <td width="10%">@Model.DepartureStation</td>
-            <td width="10%">@Model.FinalDestination</td>
-            <td width="10%">@Model.TrainLength</td>
-            <td width="10%">@amountOfTrains</td>
-            <td width="20%">@needRailwayCarriage</td>
-            <td width="20%">@tvs</td>
-            <td width="20%">@overtime</td>
+            <th>Train Length(railway carriages)</th>
+            <td>
+                    @if (@Model.TrainLength <= @Model.AverageAmountPerDay)
+                    {
+                    <p>@Model.TrainLength </p>
+                    }
+                    else
+                    {
+                    <p>@Model.AverageAmountPerDay</p>
+                    }
+            </td>
         </tr>
+        <tr>
+            <th>Weight</th>
+            <td>
+                    @if (factWeight <= Model.Weight)
+                    {
+                    <p> Weight matching and equals @factWeight tons </p>
+                    }
+                    else
+                    {
+                    <p>Overweight in @overWeight tons</p>
+                    }
+            </td>
+        </tr>       
+        <tr>
+            <th>Time, required to form one train</th>
+            <td>@tvs</td>
+        </tr>
+        <tr>
+            <th>Amount carriages with dangerous cargo</th>
+            <td>@Model.DC</td>
+        </tr>
+        <tr>
+            <th>Amount of trains</th>
+            <td>@amountOfTrains</td>
+        </tr>
+        <tr>
+            <th>Required number of railway carriages for a new train</th>
+            <td>@needRailwayCarriage</td>
+        </tr>
+        <tr>
+            <th>Time, required to form all trains for this direction</th>
+            <td>@overTime</td>
+        </tr>            
 
     </tbody>
 </table>
 
-<div class="w-12 btn-group" role="group">    
+<div class="w-12 btn-group" role="group">
     <a asp-action="Index" class="btn btn-outline-info">🡸 Back</a>
+    <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@Model.TrainId" class="btn btn-outline-secondary">Edit</a>
 </div>
 
 

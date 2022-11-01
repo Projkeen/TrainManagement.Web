@@ -8,10 +8,10 @@
 <div>
     <div class="row pt-4">
         <div class="col-5">
-            <h2 class="text">View All Trains</h2>
+            <h2 class="text">Trains</h2>
         </div>
         <div class="col-3">
-            <a asp-controller="Train" asp-action="Add" class="btn btn-secondary btn-lg">Add New Train</a>
+            <a asp-controller="Train" asp-action="Add" class="btn btn-secondary btn-lg">+ Add New Train</a>
         </div>
     </div>
 </div>
@@ -24,8 +24,9 @@
             <tr>
                 <th>Departure Station</th>
                 <th>Final Destination</th>
-                <th>Maximum train length on this direction(in railway carriages)</th>
-                <th>Average Amount Of Carriages Per Day(railway carriages)</th>
+                <th>Train length on this direction (in railway carriages)</th>
+                <th>Maximum train weight on this direction</th>
+                <th>Average amount of carriages per day on this direction</th>
                 <th>Control Panel</th>
             </tr>
         </thead>
@@ -36,7 +37,8 @@
                     <td width="20%">@i.DepartureStation</td>
                     <td width="20%">@i.FinalDestination</td>
                     <td width="20%">@i.TrainLength</td>
-                    <td width="20%">@i.AverageAmountOfCarriagesPerDay</td>
+                    <td width="20%">@i.Weight</td>
+                    <td width="20%">@i.AverageAmountPerDay</td>
                     <td width="30%">
                         <div class="w-100 btn-group" role="group">
                             <a asp-controller="Train" asp-action="TrainCalculate" asp-route-id="@i.TrainId" class="btn btn-outline-success">Calculate</a>
@@ -51,6 +53,6 @@
 }
 else
 {
-    <p class="text-center"><b>No Train Created Yet</b></p>
+    <p class="text-center"><b>No trains in forecast</b></p>
 }
 

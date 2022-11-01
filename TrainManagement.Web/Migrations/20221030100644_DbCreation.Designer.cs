@@ -11,8 +11,8 @@ using TrainManagement.Web.Data;
 namespace TrainManagement.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221020180127_InitialDbCreation")]
-    partial class InitialDbCreation
+    [Migration("20221030100644_DbCreation")]
+    partial class DbCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,12 +31,18 @@ namespace TrainManagement.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TrainId"), 1L, 1);
 
-                    b.Property<int>("AverageAmountOfCarriagesPerDay")
+                    b.Property<int>("AverageAmountPerDay")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DC")
                         .HasColumnType("int");
 
                     b.Property<string>("DepartureStation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EC")
+                        .HasColumnType("int");
 
                     b.Property<string>("FinalDestination")
                         .IsRequired()
@@ -45,9 +51,36 @@ namespace TrainManagement.Web.Migrations
                     b.Property<int>("TrainLength")
                         .HasColumnType("int");
 
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
                     b.HasKey("TrainId");
 
                     b.ToTable("Trains");
+                });
+
+            modelBuilder.Entity("TrainManagement.Web.Models.UserModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
