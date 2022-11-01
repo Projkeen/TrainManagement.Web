@@ -6,7 +6,7 @@ namespace TrainManagement.Web.Controllers
 {
     public class TrainController : Controller
     {
-        public readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public TrainController(ApplicationDbContext context)
         {
             _context = context;
