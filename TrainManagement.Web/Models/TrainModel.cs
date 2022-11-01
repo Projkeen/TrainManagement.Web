@@ -15,7 +15,7 @@ namespace TrainManagement.Web.Models
         public string? FinalDestination { get; set; }
 
         //[Required(ErrorMessage = "Please enter train length")]
-        [Display(Name = "Train lenght for this direction")]
+        [Display(Name = "Train lenght on this direction")]
         [Range(1, 100, ErrorMessage = "Please enter a valid train length (1-100)")]
         public int TrainLength { get; set; }
 

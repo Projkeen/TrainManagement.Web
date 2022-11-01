@@ -16,7 +16,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="DepartureStation"></label>
+                <label asp-for="DepartureStation">Start from</label>
                 <input asp-for="DepartureStation" class="form-control" readonly/>
                 <span asp-validation-for="DepartureStation" class="text-danger"></span>
             </div>
@@ -24,7 +24,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="FinalDestination"></label>
+                <label asp-for="FinalDestination">Final destination</label>
                 <input asp-for="FinalDestination" class="form-control" readonly/>
                 <span asp-validation-for="FinalDestination" class="text-danger"></span>
             </div>
@@ -40,7 +40,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="TrainLength"></label>
+                <label asp-for="TrainLength">Train length on this direction</label>
                 <input asp-for="TrainLength" class="form-control" />
                 <span asp-validation-for="TrainLength" class="text-danger"></span>
             </div>
@@ -56,7 +56,7 @@
         <br />        
         <div class="row">
             <div class="col-4">
-                <label asp-for="AverageAmountPerDay"></label>
+                <label asp-for="AverageAmountPerDay">Amount of carriages per day</label>
                 <input asp-for="AverageAmountPerDay" class="form-control" />
                 <span asp-validation-for="AverageAmountPerDay" class="text-danger"></span>
             </div>

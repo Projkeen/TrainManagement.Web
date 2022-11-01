@@ -8,7 +8,7 @@
 <div>
     <div class="row pt-4">
         <div class="col-5">
-            <h2 class="text">Trains</h2>
+            <h2 class="text" style="margin-left:150px">Directions →</h2>
         </div>
         <div class="col-3">
             <a asp-controller="Train" asp-action="Add" class="btn btn-secondary btn-lg">+ Add New Train</a>
@@ -16,9 +16,9 @@
         <div class="col-4">
             <form asp-action="Index" method="get">
                 <div class="w-100 btn-group" role="group">                    
-                    <input type="text" class="form-control" name="SearchString" placeholder="Search in final destination" autocomplete="off" value="@ViewData["Filter"]" />
-                    <input type="submit" value="Search" class="btn btn-secondary" />
-                    <a asp-action="Index" class="btn btn-info">Back</a>
+                    <input type="text" class="form-control" name="SearchString" placeholder="Search final destination" autocomplete="off" value="@ViewData["Filter"]" />
+                    <input type="submit" value="🔍 Search" class="btn btn-secondary" />
+                    <a asp-action="Index" class="btn btn-info">🆑Clear</a>
                 </div>
             </form>            
         </div>

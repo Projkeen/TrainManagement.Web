@@ -20,7 +20,7 @@ namespace TrainManagement.Web.Controllers
             if (!String.IsNullOrEmpty(SearchString))
             {
                 train = train.Where(f => f.FinalDestination.Contains(SearchString));               
-            }
+            }           
 
             return View(train);
         }
