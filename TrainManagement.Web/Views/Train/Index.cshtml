@@ -40,11 +40,15 @@
                     <td width="20%">@i.Weight</td>
                     <td width="20%">@i.AverageAmountPerDay</td>
                     <td width="30%">
-                        <div class="w-100 btn-group" role="group">
-                            <a asp-controller="Train" asp-action="TrainCalculate" asp-route-id="@i.TrainId" class="btn btn-outline-success">Calculate</a>
-                            <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@i.TrainId" class="btn btn-outline-secondary">Edit</a>
-                            <a asp-controller="Train" asp-action="TrainDelete" asp-route-id="@i.TrainId" class="btn btn-outline-danger">Delete</a>
-                        </div>
+                        <form asp-action="Delete" asp-route-id="@i.TrainId">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Train" asp-action="TrainCalculate" asp-route-id="@i.TrainId" class="btn btn-outline-success">Calculate</a>
+                                <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@i.TrainId" class="btn btn-outline-secondary">Edit</a>
+                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('⚠ Are you sure?')">Delete</button>
+                            </div>
+                        </form>
+                     
+                        
                     </td>
                 </tr>
             }

@@ -50,21 +50,11 @@ namespace TrainManagement.Web.Controllers
             }
             return View();
         }
-
-        public IActionResult TrainDelete(int? Id)
+                
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(int? Id)
         {
             var _trainModel = _context.Trains.Find(Id);
-            if (_trainModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(_trainModel);
-        }
-
-        public IActionResult Delete(int? TrainId)
-        {
-            var _trainModel = _context.Trains.Find(TrainId);
             if (_trainModel == null)
             {
                 return NotFound();
