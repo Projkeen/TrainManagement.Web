@@ -16,10 +16,10 @@ namespace TrainManagement.Web.Controllers
             //IEnumerable<TrainModel> trainList = _context.Trains.ToList();
             //return View(trainList);
             ViewData["Filter"] = SearchString;
-            var train = from f in _context.Trains select f;
+            var train = from t in _context.Trains select t;
             if (!String.IsNullOrEmpty(SearchString))
             {
-                train = train.Where(f => f.FinalDestination.Contains(SearchString));               
+                train = train.Where(t => t.FinalDestination.Contains(SearchString) || t.DepartureStation.Contains(SearchString));               
             }           
 
             return View(train);
