@@ -14,5 +14,10 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    /*background-image: url('../images/train-tracks-in-the-middle-of-an-empty-field-with-a-snowy-mountain-in-the-distance.jpg');*/
+    /*background-image: url('../images/railtroad-concrept_441797-11714.jpg');*/
+    background-image: url('../images/1653261880_33-celes-club-p-fon-dlya-prezentatsii-zheleznaya-doroga-kr-36.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
