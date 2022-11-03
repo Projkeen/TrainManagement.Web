@@ -7,7 +7,7 @@
 }
 @{
     int lc = Model.TrainLength - Model.EC;
-    double factWeight = (25.4 * Model.EC + 65 * lc);
+    double factWeight = (25.4 * Model.EC + 80 * lc);
     double overWeight = factWeight - Model.Weight;
     int amountOfTrains = Model.AverageAmountPerDay / Model.TrainLength;
     int needRailwayCarriage = Model.TrainLength - (Model.AverageAmountPerDay % Model.TrainLength);
