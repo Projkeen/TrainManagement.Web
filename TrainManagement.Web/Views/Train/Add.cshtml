@@ -11,12 +11,12 @@
     <div class="border p-2">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group row">
-            <h4 class="text-black-50 pl-3">Add New Train</h4>
+            <h4 class="text-black pl-3">Add New Train</h4>
         </div>
 
         <div class="row">
             <div class="col-4">
-                <label asp-for="DepartureStation">Departure station</label>
+                <label asp-for="DepartureStation"><b>Departure station</b></label>
                 <input asp-for="DepartureStation" class="form-control" />
                 <span asp-validation-for="DepartureStation" class="text-danger"></span>
             </div>
@@ -24,7 +24,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="FinalDestination">Final destination</label>
+                <label asp-for="FinalDestination"><b>Final destination</b></label>
                 <input asp-for="FinalDestination" class="form-control" />
                 <span asp-validation-for="FinalDestination" class="text-danger"></span>
             </div>
@@ -32,7 +32,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="Weight">Maximum train weight on this direction</label>
+                <label asp-for="Weight"><b>Maximum train weight on this direction</b></label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
@@ -40,7 +40,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="TrainLength">Train length on this direction (in railway carriages)</label>
+                <label asp-for="TrainLength"><b>Train length on this direction (in railway carriages)</b></label>
                 <input asp-for="TrainLength" class="form-control" />
                 <span asp-validation-for="TrainLength" class="text-danger"></span>
             </div>
@@ -48,7 +48,7 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="EC">Including empty railway carriages</label>
+                <label asp-for="EC"><b>Including empty railway carriages</b></label>
                 <input asp-for="EC" class="form-control" />
                 <span asp-validation-for="EC" class="text-danger"></span>
             </div>
@@ -57,7 +57,7 @@
        
         <div class="row">
             <div class="col-4">
-                <label asp-for="AverageAmountPerDay">Amount of carriages per day on this destination (in railway carriages)</label>
+                <label asp-for="AverageAmountPerDay"><b>Amount of carriages per day on this destination (in railway carriages)</b></label>
                 <input asp-for="AverageAmountPerDay" class="form-control" />
                 <span asp-validation-for="AverageAmountPerDay" class="text-danger"></span>
             </div>
@@ -65,15 +65,15 @@
         <br />
         <div class="row">
             <div class="col-4">
-                <label asp-for="DC">Amount of railway carriages with dangerous cargo</label>
+                <label asp-for="DC"><b>Amount of railway carriages with dangerous cargo</b></label>
                 <input asp-for="DC" class="form-control" />
                 <span asp-validation-for="DC" class="text-danger"></span>
             </div>
         </div>
         <br />
         <div class="w-12 btn-group" role="group">
-            <a asp-action="Index" class="btn btn-outline-info mx-1">🡸 Back</a>
-            <input type="submit" class="btn btn-outline-danger mx-1" value="✓ Add" />
+            <a asp-action="Index" class="btn btn-info mx-1">🡸 Back</a>
+            <input type="submit" class="btn btn-danger mx-1" value="✓ Add" />
         </div>
     </div>
 </form>

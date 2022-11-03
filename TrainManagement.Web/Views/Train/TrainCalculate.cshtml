@@ -6,29 +6,31 @@
     ViewData["Title"] = "Calculation Results";
 }
 @{
-
     int lc = Model.TrainLength - Model.EC;
     double factWeight = (25.4 * Model.EC + 65 * lc);
     double overWeight = factWeight - Model.Weight;
     int amountOfTrains = Model.AverageAmountPerDay / Model.TrainLength;
     int needRailwayCarriage = Model.TrainLength - (Model.AverageAmountPerDay % Model.TrainLength);
     //var ts = TimeSpan.FromMinutes(Model.TrainLength * 2.4);
-    TimeSpan ts = TimeSpan.FromMinutes(Model.TrainLength * 1.7 + Model.DC * 2.3);    
+    TimeSpan ts = TimeSpan.FromMinutes(Model.TrainLength * 1.7 + Model.DC * 2.3);
     TimeSpan tvs = new TimeSpan(ts.Ticks - (ts.Ticks % 600000000));
-    var overTime = tvs * amountOfTrains - 0.4 * tvs;
+    TimeSpan overts = TimeSpan.FromMinutes(Model.AverageAmountPerDay * 1.7 + Model.DC * 2.3);
+    var time = tvs * amountOfTrains - 0.4 * tvs;
+
+
 }
 
 <h3 style="text-align:center" class="pt-5">Results calculation the train formation on direction from @Model.DepartureStation to @Model.FinalDestination</h3>
 <br />
 
 <table class="table table-bordered table-hover table-striped" style="text-align:center" width="100%">
-    <thead style="height:auto; vertical-align: central" width=50%>     
+    <thead style="height:auto; vertical-align: central" width=50%>
 
     <tbody>
         <tr>
             <th>Train Length(railway carriages)</th>
-            <td>
-                    @if (@Model.TrainLength <= @Model.AverageAmountPerDay)
+            <td style="font-size:larger">
+                    @if (Model.TrainLength <= Model.AverageAmountPerDay)
                     {
                     <p>@Model.TrainLength </p>
                     }
@@ -40,7 +42,7 @@
         </tr>
         <tr>
             <th>Weight</th>
-            <td>
+            <td style="font-size:larger">
                     @if (factWeight <= Model.Weight)
                     {
                     <p> Weight matching and equals @factWeight tons </p>
@@ -50,19 +52,29 @@
                     <p>Overweight in @overWeight tons</p>
                     }
             </td>
-        </tr>       
+        </tr>
         <tr>
             <th>Time required to form one train</th>
-            <td>@tvs</td>
+            <td style="font-size:larger">
+                    @if (Model.TrainLength <= Model.AverageAmountPerDay)
+                    {
+                    <p>@tvs</p>
+                    }
+                    else
+                    {
+                    <p>@overts</p>
+                    }
+                    
+            </td>
         </tr>
         <tr>
             <th>Amount carriages with dangerous cargo</th>
-            <td>@Model.DC</td>
+            <td style="font-size:larger">@Model.DC</td>
         </tr>
         <tr>
             <th>Amount of trains</th>
-            <td>
-                    @if (@Model.TrainLength <= @Model.AverageAmountPerDay)
+            <td style="font-size:larger">
+                    @if (Model.TrainLength <= Model.AverageAmountPerDay)
                     {
                     <p>@amountOfTrains</p>
                     }
@@ -74,19 +86,36 @@
         </tr>
         <tr>
             <th>Required number of railway carriages for a new train</th>
-            <td>@needRailwayCarriage</td>
+            <td style="font-size:larger">
+                    @if (Model.AverageAmountPerDay <= Model.TrainLength)
+                    {
+                    <p>needed @needRailwayCarriage for a full train</p>
+                    }
+                    else
+                    {
+                    <p>@needRailwayCarriage</p>
+                    }
+            </td>
         </tr>
         <tr>
             <th>Time required to form all trains for this direction</th>
-            <td>@overTime</td>
-        </tr>            
-
+            <td style="font-size:larger">
+                    @if (Model.TrainLength <= Model.AverageAmountPerDay)
+                    {
+                    <p>@time</p>
+                    }
+                    else
+                    {
+                    <p>@overts</p>
+                    }
+            </td>
+        </tr>
     </tbody>
 </table>
 
 <div class="w-12 btn-group" role="group">
-    <a asp-action="Index" class="btn btn-outline-info mx-1">🡸 Back</a>
-    <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@Model.TrainId" class="btn btn-outline-secondary mx-1">Edit</a>
+    <a asp-action="Index" class="btn btn-info mx-1">🡸 Back</a>
+    <a asp-controller="Train" asp-action="TrainEdit" asp-route-id="@Model.TrainId" class="btn btn-secondary mx-1">Edit</a>
 </div>
 
 
