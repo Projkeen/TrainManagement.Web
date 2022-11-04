@@ -72,7 +72,6 @@ namespace TrainManagement.Web.Controllers
             return RedirectToAction("Index");
                         
         }
-
         public IActionResult TrainCalculate(int? Id)
         {
             var _trainModel = _context.Trains.Find(Id);
